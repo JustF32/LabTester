@@ -1,0 +1,10 @@
+{
+    "description": "Реализация и сравнение структур данных: стек, очередь, дек, связный список и бинарное дерево поиска.",
+    "headerFile": "tests/cc.h",
+    "id": 6,
+    "language": "C++",
+    "starterFile": "starter/cc_template.cpp",
+    "testSuiteFile": "tests/sort_test.cpp",
+    "title": "Лабораторная 2",
+    "updatedAt": "2026-05-17T03:55:00.000"
+}

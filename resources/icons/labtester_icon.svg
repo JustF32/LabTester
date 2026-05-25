@@ -1,0 +1,22 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="34" y1="28" x2="226" y2="236" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#12345A"/>
+      <stop offset="1" stop-color="#0A1728"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="128" y1="62" x2="128" y2="232" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D7EEFF" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#83C6FF" stop-opacity="0.68"/>
+    </linearGradient>
+    <linearGradient id="liquid" x1="78" y1="144" x2="184" y2="188" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#39B9FF"/>
+      <stop offset="1" stop-color="#1F82FF"/>
+    </linearGradient>
+  </defs>
+  <rect x="14" y="14" width="228" height="228" rx="52" fill="url(#bg)"/>
+  <rect x="14" y="14" width="228" height="228" rx="52" stroke="#3E5F86" stroke-width="4"/>
+  <path d="M102 58H154V72H147V118L183 176C196 197 181 224 157 224H99C75 224 60 197 73 176L109 118V72H102V58Z" fill="url(#glass)" stroke="#A6D7FF" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M78 176C74 182 74 188 77 193C81 200 88 204 97 204H159C168 204 175 200 179 193C182 188 182 182 178 176L165 156H91L78 176Z" fill="url(#liquid)"/>
+  <path d="M98 156L87 178C85 181 85 184 86 186C88 191 92 194 98 194H158C164 194 168 191 170 186C171 184 171 181 169 178L158 156H98Z" fill="#2A9AFF" opacity="0.45"/>
+  <path d="M95 180L117 202L162 157" stroke="#E9F7FF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

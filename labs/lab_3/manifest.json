@@ -1,0 +1,10 @@
+{
+    "description": "Хеш-функции для строк, анализ распределения и хеш-таблица с добавлением, поиском и удалением.",
+    "headerFile": "tests/cc.h",
+    "id": 3,
+    "language": "C++",
+    "starterFile": "starter/cc_template.cpp",
+    "testSuiteFile": "tests/sort_test.cpp",
+    "title": "Лабораторная 3: Хеш-функции и хеш-таблицы",
+    "updatedAt": "2026-05-25T01:58:01.862"
+}

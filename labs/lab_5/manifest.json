@@ -1,0 +1,10 @@
+{
+    "description": "21212121",
+    "headerFile": "tests/cc.h",
+    "id": 5,
+    "language": "C++",
+    "starterFile": "starter/cc_template.cpp",
+    "testSuiteFile": "tests/sort_test.cpp",
+    "title": "Тестовая лабораторная",
+    "updatedAt": "2026-05-16T01:44:28.857"
+}
