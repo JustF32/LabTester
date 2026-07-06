@@ -1,0 +1,10 @@
+{
+    "description": "Рабин-Карп, Кнут-Моррис-Пратт, Бойер-Мур и Ахо-Корасик: поиск подстрок и множественных шаблонов.",
+    "headerFile": "tests/cc.h",
+    "id": 4,
+    "language": "C++",
+    "starterFile": "starter/cc_template.cpp",
+    "testSuiteFile": "tests/strings_test.cpp",
+    "title": "Лабораторная 4: Алгоритмы на строках",
+    "updatedAt": "2026-05-25T01:58:01.870"
+}

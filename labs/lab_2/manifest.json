@@ -1,0 +1,10 @@
+{
+    "description": "Стек, очередь, дек, связный список и бинарное дерево поиска: корректность базовых операций, рост динамических массивов, краевые случаи и эффективность.",
+    "headerFile": "tests/cc.h",
+    "id": 2,
+    "language": "C++",
+    "starterFile": "starter/cc_template.cpp",
+    "testSuiteFile": "tests/structures_test.cpp",
+    "title": "Лабораторная 2: Структуры данных",
+    "updatedAt": "2026-05-25T01:58:01.853"
+}
