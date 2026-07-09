@@ -1,4 +1,4 @@
-﻿import QtQuick
+import QtQuick
 import QtQuick.Controls
 import QtQuick.Controls.Material
 import QtQuick.Layouts
@@ -36,13 +36,13 @@ ApplicationWindow {
     ]
     onCurrentPageIndexChanged: {
         navLog("currentPageIndex -> " + currentPageIndex + " (" + pageTitles[currentPageIndex] + ")")
-        root.forceActiveFocus()
+        root.contentItem.forceActiveFocus()
         pageTransition.restart()
     }
 
     function selectPage(index) {
         currentPageIndex = index
-        root.forceActiveFocus()
+        root.contentItem.forceActiveFocus()
     }
 
     function navLog(message) {

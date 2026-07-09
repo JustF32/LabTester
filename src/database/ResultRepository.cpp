@@ -292,14 +292,23 @@ std::vector<domain::CheckRunHistoryEntry> ResultRepository::fetchHistory(
         "LEFT JOIN students s ON s.id = cr.student_id "
         "LEFT JOIN student_groups g ON g.id = s.group_id "
         "LEFT JOIN lab_works l ON l.id = cr.lab_work_id "
-        "WHERE (:student_id = 0 OR cr.student_id = :student_id) "
-        "  AND (:lab_work_id = 0 OR cr.lab_work_id = :lab_work_id) "
-        "  AND (:group_name = '' OR lower(COALESCE(g.name, '')) = lower(:group_name)) "
+        "WHERE (:student_id1 = 0 OR cr.student_id = :student_id2) "
+        "  AND (:lab_work_id1 = 0 OR cr.lab_work_id = :lab_work_id2) "
+        "  AND (:group_name1 = '' OR lower(COALESCE(g.name, '')) = lower(:group_name2)) "
         "ORDER BY cr.id DESC"
     ));
-    query.bindValue(QStringLiteral(":student_id"), studentIdFilter > 0 ? studentIdFilter : 0);
-    query.bindValue(QStringLiteral(":lab_work_id"), labWorkIdFilter > 0 ? labWorkIdFilter : 0);
-    query.bindValue(QStringLiteral(":group_name"), groupNameFilter.trimmed());
+    
+    const int actualStudentId = studentIdFilter > 0 ? studentIdFilter : 0;
+    query.bindValue(QStringLiteral(":student_id1"), actualStudentId);
+    query.bindValue(QStringLiteral(":student_id2"), actualStudentId);
+    
+    const int actualLabWorkId = labWorkIdFilter > 0 ? labWorkIdFilter : 0;
+    query.bindValue(QStringLiteral(":lab_work_id1"), actualLabWorkId);
+    query.bindValue(QStringLiteral(":lab_work_id2"), actualLabWorkId);
+    
+    const QString actualGroupName = groupNameFilter.trimmed();
+    query.bindValue(QStringLiteral(":group_name1"), actualGroupName);
+    query.bindValue(QStringLiteral(":group_name2"), actualGroupName);
 
     if (!query.exec()) {
         qWarning() << "Failed to fetch history:" << query.lastError().text();

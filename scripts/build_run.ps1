@@ -411,6 +411,12 @@ if (-not $NoDeploy) {
     Ensure-QpsqlPlugin -QtPrefix $qtPrefix -DeployDir (Split-Path -Parent $exePath) -Config $Configuration
     Copy-PostgresRuntime -TargetDir (Split-Path -Parent $exePath)
     Ensure-VcRedistInDeploy -DeployDir (Split-Path -Parent $exePath)
+    
+    $qtConfPath = Join-Path (Split-Path -Parent $exePath) "qt.conf"
+    @"[Paths]
+Prefix=.
+Plugins=.
+"@ | Set-Content -Path $qtConfPath -Encoding UTF8
 }
 
 if (-not $NoRun) {
