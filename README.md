@@ -98,15 +98,25 @@ WorkspaceService: 100%
 Структура тестов:
 
 tests/
+
 unit/
+
 test_common.h - общие утилиты и фикстуры
+
 test_database_manager.cpp - тесты DatabaseManager
+
 test_submission_repository.cpp - тесты SubmissionRepository
+
 test_result_repository.cpp - тесты ResultRepository
+
 test_submission_service.cpp - тесты SubmissionService
+
 test_submission_import_service.cpp - тесты SubmissionImportService
+
 test_execution_settings_service.cpp - тесты ExecutionSettingsService
+
 test_report_service.cpp - тесты ReportService
+
 test_workspace_service.cpp - тесты WorkspaceService
 
 Ключевые фикстуры в test_common.h:
@@ -194,7 +204,7 @@ EXPECT_GT(createdId, 0);
 
 Пример создания нового файла тестов:
 
-#include "test_common.h"
+```#include "test_common.h"
 #include "services/NewService.h"
 
 using namespace labtester::services;
@@ -216,7 +226,7 @@ auto input = "test";
 auto result = m_service->methodName(input);
 EXPECT_EQ(result, "expected");
 }
-
+```
 Соглашения по именованию:
 
 Набор тестов: [ИмяКласса]Test (например, DatabaseManagerTest)
