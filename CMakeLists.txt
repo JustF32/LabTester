@@ -189,3 +189,5 @@ install(TARGETS LabTester
 install(TARGETS LabTesterWorker
     RUNTIME DESTINATION bin
 )
+
+add_subdirectory(tests)
