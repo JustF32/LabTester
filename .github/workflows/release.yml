@@ -1,0 +1,79 @@
+name: Release Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g., 1.0.0)'
+        required: true
+        type: string
+      pre_release:
+        description: 'Pre-release'
+        required: false
+        default: false
+        type: boolean
+
+env:
+  QT_VERSION: 6.8.0
+  QT_ARCH: msvc2022_64
+
+jobs:
+  build-release:
+    name: Build Release v${{ github.event.inputs.version }}
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Setup Qt6
+      uses: jurplel/install-qt-action@v4
+      with:
+        version: ${{ env.QT_VERSION }}
+        host: windows
+        target: desktop
+        arch: win64_msvc2022_64
+        cache: true
+        dir: ${{ github.workspace }}/qt
+
+    - name: Setup Inno Setup
+      uses: dbeatty10/install-inno-setup@v1
+
+    - name: Add MSVC to PATH
+      uses: ilammy/msvc-dev-cmd@v1
+      with:
+        arch: x64
+
+    - name: Build Installer
+      shell: pwsh
+      run: |
+        .\scripts\build_installer.ps1 `
+          -QtBase "$env:Qt6_DIR" `
+          -QtVersion "${{ env.QT_VERSION }}" `
+          -QtArch "${{ env.QT_ARCH }}" `
+          -BuildDir "build" `
+          -Configuration "Release" `
+          -AppVersion "${{ github.event.inputs.version }}" `
+          -OutputDir "dist"
+
+    - name: Create Release Tag
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git tag -a "v${{ github.event.inputs.version }}" -m "Release v${{ github.event.inputs.version }}"
+        git push origin "v${{ github.event.inputs.version }}"
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        name: Release v${{ github.event.inputs.version }}
+        tag_name: v${{ github.event.inputs.version }}
+        draft: false
+        prerelease: ${{ github.event.inputs.pre_release }}
+        generate_release_notes: true
+        files: |
+          dist/*.exe
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
